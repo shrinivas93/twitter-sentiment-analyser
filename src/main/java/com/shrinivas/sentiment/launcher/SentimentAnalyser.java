@@ -13,7 +13,6 @@ public class SentimentAnalyser {
 
     private Indico indico;
     private TwitterManager manager;
-    private static String[] topics = { "india", "pakistan" };
 
     private SentimentAnalyser() throws IndicoException {
         indico = new Indico("f826de06ef66138f43552602b7b7f78d");
@@ -22,7 +21,7 @@ public class SentimentAnalyser {
 
     public static void main(String[] args) throws IndicoException, IOException, InterruptedException {
         SentimentAnalyser launcher = new SentimentAnalyser();
-        for (String topic : topics) {
+        for (String topic : args) {
             double sentimentScore = launcher.getSentiments(topic);
             System.out.println(topic + " - " + sentimentScore);
         }
